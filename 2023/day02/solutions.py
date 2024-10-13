@@ -34,7 +34,7 @@ def analyse_game(game):
     blue_cubes_max = 0
     green_cubes_max = 0
     
-    for round in game_rounds:  # ["1 green, 3 red, 6 blue", "3 green, 6 red", "3 green, 15 blue, 14 red"]
+    for round in game_rounds:
         if "red" in round:
             color_in_round = int(re.findall(r'(\d+) red',round)[0])
             red_cubes_max = max(red_cubes_max, color_in_round)    
@@ -51,3 +51,9 @@ def analyse_game(game):
 
 calculate_good_id_sum(test_part1)
 calculate_good_id_sum(input)
+
+# hulp van https://github.com/Hamatti/adventofcode-2023/blob/main/src/day_2.ipynb
+# wat hebben we geleerd?
+# 
+# De regex zoekt naar een patroon 'd+ red' en retourneert enkel hetgene tussen haakjes (de cijfers d+)
+# color_in_round = int(re.findall(r'(\d+) red',round)[0])
