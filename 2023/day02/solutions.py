@@ -10,53 +10,44 @@ with open("./2023/day02/input_test_2") as file:
 with open("./2023/day02/input") as file:
     input = file.read().strip()
 
-def calculate_possible_id_sum(input):
+def calculate_good_id_sum(input):
     games=input.splitlines()
 
-    good_ids = 0
+    good_id_sum = 0
+    power_games_sum = 0
 
     for game in games:
-        game_id, possible = game_is_possible(game)
+        game_id, possible, power = analyse_game(game)
+        power_games_sum += power
         if possible:
-            good_ids += game_id
-    print(good_ids)
+            good_id_sum += game_id
+    print(f'Part 1: {good_id_sum}')
+    print(f'Part 2: {power_games_sum}')
 
 
-def game_is_possible(game):
-    parts = re.split(':|;',game)
+def analyse_game(game):
+
+    game_id = int(''.join(re.findall(r'\d', game.split(":")[0])))
+    game_rounds = game.split(":")[1].split(";")
+
+    red_cubes_max = 0
+    blue_cubes_max = 0
+    green_cubes_max = 0
     
-    game_id = 0
-    red_cubes = 0
-    blue_cubes = 0
-    green_cubes = 0
+    for round in game_rounds:  # ["1 green, 3 red, 6 blue", "3 green, 6 red", "3 green, 15 blue, 14 red"]
+        if "red" in round:
+            color_in_round = int(re.findall(r'(\d+) red',round)[0])
+            red_cubes_max = max(red_cubes_max, color_in_round)    
+        if "blue" in round:
+            color_in_round = int(re.findall(r'(\d+) blue',round)[0])
+            blue_cubes_max = max(blue_cubes_max, color_in_round) 
+        if "green" in round:
+            color_in_round = int(re.findall(r'(\d+) green',round)[0])
+            green_cubes_max = max(green_cubes_max, color_in_round) 
+
+    power = red_cubes_max * green_cubes_max * blue_cubes_max
     
-    for part in parts:
-        number = int(''.join(re.findall(r'\d', part)))
-        if "Game" in part:
-            game_id += number
-        elif "red" in part:
-            red_cubes = max(red_cubes, number)    
-        elif "blue" in part:
-            blue_cubes = max(green_cubes, number)  
-        elif "green" in part:
-            green_cubes = max(green_cubes, number)  
-    
-    print()
-    return game_id, (red_cubes <=12 and green_cubes <=13 and blue_cubes <= 14)
+    return game_id, (red_cubes_max <=12 and green_cubes_max <=13 and blue_cubes_max <= 14), power
 
-
-
-
-
-# part 1
-calculate_possible_id_sum(test_part1)
-calculate_possible_id_sum(input)
-
-
-# part 2
-
-
-
-
-
-
+calculate_good_id_sum(test_part1)
+calculate_good_id_sum(input)
