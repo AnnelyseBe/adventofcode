@@ -7,7 +7,7 @@ def transform_input(inputlocation):
     with open(inputlocation) as file:
         return file.read().strip().splitlines()
 
-def findNumbers(input):
+def find_numbers(input):
     numbers = {}
     for x, row in enumerate(input):
         temp_number = ''
@@ -23,31 +23,28 @@ def findNumbers(input):
                 numbers[coordinates] = int(temp_number) , len(temp_number)
                 coordinates = ''
                 temp_number = ''
-    print(numbers)
     return numbers
 
-def findSymbols(input):
+def find_symbols(input):
     symbols = {}
     for x, row in enumerate(input):
         for y, value in enumerate(row):
             if (not value.isdigit() and value != '.'):
                 coordinates = (x,y)
                 symbols[coordinates] = value
-    print(symbols)
     return symbols
 
-def findPartNumbers(numbers, symbols):
+def find_numbers_near_symbols(numbers, symbols):
     partnumbers = {}
     for coordinate, value in numbers.items():
-        x, y = coordinate #rij 0 pos0
-        number, length_ = value # 5, 1
+        x, y = coordinate 
+        number, length_ = value 
 
         neighbours = []
 
-        for i in range(length_): # 0,1
-            neighbours.append((x-1,y+i)) #1,2
-            # neighbours.append((x,y+i))   #2,2
-            neighbours.append((x+1,y+i)) #3,2
+        for i in range(length_): 
+            neighbours.append((x-1,y+i)) 
+            neighbours.append((x+1,y+i)) 
             if i == 0:
                 neighbours.append((x-1,y-1))
                 neighbours.append((x,y-1))
@@ -57,51 +54,41 @@ def findPartNumbers(numbers, symbols):
                 neighbours.append((x,y+1+i))
                 neighbours.append((x+1,y+1+i))
     
-
         for neighbour in neighbours:
             if neighbour in symbols.keys():
                 partnumbers[coordinate]=number
                 break
-    print(partnumbers)
     return partnumbers
 
-def find_gears(numbers, symbols, input):
-    gear_symbols={}
+def find_gear_symbols(symbols):
+    gear_symbols=[]
 
     for coordinates, value in symbols.items():
         x, y = coordinates
         if (value == '*'):
-            gear_symbols[coordinates]=(value)
-    print("======gearsymbol=======")
-    print(gear_symbols)
-
-    # zoek parts links, rechts, boven en onder
-    # part links -> bereken laatste coordinaat en check naast
-    # part rechts -> naast gear?
-    # part boven -> 
+            gear_symbols.append(coordinates)
+    # print("======gearsymbols=======")
+    # print(gear_symbols)
 
 
 
+print("=================== part A ===================")
+input_list = transform_input(INPUT)
+
+numbers_dict = find_numbers(input_list)
+symbols_dict = find_symbols(input_list)
+partnumber_dict = find_numbers_near_symbols(numbers_dict, symbols_dict)
+
+sum = 0
+for partnumber in partnumber_dict.values():
+    sum += partnumber
+
+print(sum)
+
+print("=================== part B ===================")
+gear_symbols = find_gear_symbols(symbols_dict)
 
 
-
-
-def calculate_partnumber_sum(input):
-    print("========numbers=====================")
-    numbers = findNumbers(input)
-    print("========symbols=====================")
-    symbols = findSymbols(input)
-    print("========partnumbers=====================")
-    partnumbers = findPartNumbers(numbers, symbols)
-    print("========sum=====================")
-    sum = 0
-    for partnumber in partnumbers.values():
-        sum += partnumber
-    print(sum)
-    find_gears(numbers, symbols, input)
-    
-
-calculate_partnumber_sum(transform_input(INPUT))
 
 
 
