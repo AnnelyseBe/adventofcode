@@ -42,13 +42,11 @@ def calculate_card_points(scratchcards):
 
 def calculate_cart_count(scratchcards):
     cards_count = {i:1 for i in range(1,len(scratchcards)+1)}
-    print(cards_count)
 
     for card in scratchcards: 
         for i in range(card.matches):
             cards_count[card.card_number + 1 + i] += cards_count[card.card_number]
 
-    print(cards_count)
     return cards_count
 
 
