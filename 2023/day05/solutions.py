@@ -77,22 +77,26 @@ ranges = [
 
 locations = [calculate_seed_to_location(seed, ranges) for seed in seeds]
 
-print(min(locations))
+print(min(locations)) # 535088217
 
 print("=================== part B ===================")
 
-# dit mag ik echt niet runnen. Te groot en laat mijn computer crashen. Ik las ergens dat je moet terugrekenen. Kleinste locatie (=0) terugrekenen naar seedgetal en dan verifieren of dat in onze seeds zit.
-# dan zou het nog 2 min ofzo duren
-# ik zou denken dat we best de seed opdelen in reeksen van 1000 ofzo en telkens de berekening laten doen -> dan zal het wel super lang duren
+# Initieel had ik gewoon dezelfde manier gebruikt als deel A. Dit lukte ergens niet, zoveel waarden in de seeds lijst zetten deed mijn pc crashen.
 
-# complete_seed_list = to_seed_ranges_approach(seeds) 
+# Ik ben gegaan voor de lazy oplossing en ipv alle waarden in een lijst te zetten, loop ik apart over alle waarden in de range, zonder ze eerst in een lijst te zetten. 
+# En telkens verifieren of de location kleiner is dan de waarde die al in het geheugen zat
+# dan heb je minder geheugen plaatsen nodig en werk je 1 per 1 af.
+# Dit lukte, maar mijn computer had er meer dan 3u voor nodig (maar hij crashte tenminste niet meer)
 
-# locations_complete_seed_list = []
+# De betere oplossing is starten van de locatie = 0. En dan checken of de overeenkomstige seed in onze seeds zit (dat zou op een 2 tal minuten mogen duren)
 
-# for seed in complete_seed_list:
-#     locations_complete_seed_list.append(calculate_seed_to_location(seed, ranges))
-
-# print(min(locations_complete_seed_list))
+min_location = calculate_seed_to_location(seeds[0], ranges)
+for i in range(0, len(seeds), 2):
+    for seed in (range(seeds[i], seeds[i] + seeds[i+1])):
+        location = calculate_seed_to_location(seed, ranges)
+        min_location = location if location < min_location else min_location
+    
+print(min_location)  # 51399228
 
 print("============== calculation time ==============")
 
@@ -100,6 +104,9 @@ end_time = time.time()
 execution_time = end_time - start_time
 
 print(f'Execution time: {execution_time:.4f} seconds')
+
+
+# Execution time: 11448.0472 seconds
 
 
 
