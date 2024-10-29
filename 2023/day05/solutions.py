@@ -52,7 +52,7 @@ def to_seed_ranges_approach(seeds):
 
 
 print("=================== part A ===================")
-almanac_paragraphs = transform_input(INPUT)
+almanac_paragraphs = transform_input(TEST_INPUT)
 
 seeds = extract_seeds(almanac_paragraphs)
 print(len(seeds))
@@ -98,15 +98,20 @@ for i in range(0, len(seeds), 2):
     
 print(min_location)  # 51399228
 
-print("============== calculation time ==============")
+print("============== Execution time ==============") # Execution time: 11448.0472 seconds
 
 end_time = time.time()
 execution_time = end_time - start_time
 
-print(f'Execution time: {execution_time:.4f} seconds')
+hours, rem = divmod(execution_time, 3600)
+minutes, rem = divmod(rem, 60)
+seconds, milliseconds = divmod(rem, 1)
+milliseconds *= 1000
+
+print(f"Execution time: {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds, {milliseconds:.4f} milliseconds")
 
 
-# Execution time: 11448.0472 seconds
+
 
 
 
