@@ -1,5 +1,10 @@
 from utils.execution_timer import ExecutionTimer
+# from ...utils.execution_timer import ExecutionTimer
 import re
+import os
+
+
+print(os.listdir())
 
 INPUT = './2023/day06/input'
 TEST_INPUT = './2023/day06/input_test_1'

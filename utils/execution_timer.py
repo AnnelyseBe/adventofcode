@@ -1,5 +1,7 @@
 import time
 
+__all__ = ['ExecutionTimer']
+
 class ExecutionTimer:
     def __init__(self):
         self.start_time = None
