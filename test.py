@@ -1,4 +1,3 @@
+a = sum([3, 5, False, True, True])
 
-
-
-print("3   4".split(" "))
+print(a)
