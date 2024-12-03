@@ -50,29 +50,29 @@ with ExecutionTimer():
 # Execution time: 0 hours, 0 minutes, 0 seconds, 8.9996 milliseconds
        
 print("=================== part B ===================")
-# with ExecutionTimer():
-#     directions, nodes = transform_input(INPUT)
-#     # print(nodes)
+with ExecutionTimer():
+    directions, nodes = transform_input(INPUT)
+    # print(nodes)
     
-#     next_nodes = [key for key in nodes if key.endswith('A')]
-#     # print(next_nodes)
+    next_nodes = [key for key in nodes if key.endswith('A')]
+    # print(next_nodes)
 
-#     step = 0
+    step = 0
     
-#     while (not all(node.endswith('Z') for node in next_nodes)):
-#         temp = []
-#         # print(step)
-#         for node in next_nodes:
-#             next_node = find_next_node(node, directions[step%len(directions)])
-#             temp.append(next_node)
-#         # print(temp)
+    while (not all(node.endswith('Z') for node in next_nodes)):
+        temp = []
+        # print(step)
+        for node in next_nodes:
+            next_node = find_next_node(node, directions[step%len(directions)])
+            temp.append(next_node)
+        # print(temp)
             
-#         next_nodes.clear()
-#         next_nodes.extend(temp)
-#         # print(next_nodes)
-#         step += 1
+        next_nodes.clear()
+        next_nodes.extend(temp)
+        # print(next_nodes)
+        step += 1
         
-#     print(step)
+    print(step)
  
 print("=================== part B =================== smarter ===================")   
 with ExecutionTimer():

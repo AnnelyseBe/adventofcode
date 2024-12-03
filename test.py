@@ -1,3 +1,8 @@
-a = sum([3, 5, False, True, True])
+import re
 
-print(a)
+
+content= 'ljml_jmljlmllk_lk'
+
+
+input_strings = re.split(r"(_)", content)
+print(input_strings)
