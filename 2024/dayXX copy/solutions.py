@@ -2,6 +2,7 @@ from utils.execution_timer import ExecutionTimer
 from collections import namedtuple, Counter
 import numpy as np
 from pathlib import Path
+import re
 
 
 # Define the base directory relative to the current script's location
