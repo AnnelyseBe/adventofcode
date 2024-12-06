@@ -1,4 +1,5 @@
 from utils.execution_timer import ExecutionTimer
+from utils.array_helper import ArrayHelper
 from collections import namedtuple, Counter
 import numpy as np
 from pathlib import Path
@@ -23,6 +24,7 @@ def transform_input(inputlocation):
 
 print("=================== part A ===================")
 with ExecutionTimer():
+    transform_input(TEST_INPUT)
     print("todo")
 
     
@@ -30,6 +32,7 @@ with ExecutionTimer():
     
 print("=================== part B ===================")
 with ExecutionTimer():
+    transform_input(TEST_INPUT)
     print("todo")
 
     

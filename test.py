@@ -17,3 +17,8 @@ my_diagonal = my_array.diagonal(offset=-len(my_array)+1)
 print(my_diagonal)
 
 
+testset = {1,2,3}
+
+print(testset.add(1))
+print(testset.add(8))
+

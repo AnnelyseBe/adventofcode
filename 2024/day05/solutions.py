@@ -89,6 +89,7 @@ with ExecutionTimer():
 
 # 4828
 # Execution time: 0 hours, 0 minutes, 0 seconds, 530.6508 milliseconds
+# eigenlijk had ik in part B de python.sorted() functie moeten gebruiken ipv zelf te gaan sorteren
     
         
         
