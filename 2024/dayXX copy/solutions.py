@@ -4,6 +4,7 @@ from collections import namedtuple, Counter
 import numpy as np
 from pathlib import Path
 import re
+from itertools import product 
 
 
 # Define the base directory relative to the current script's location
