@@ -5,6 +5,8 @@ import numpy as np
 from pathlib import Path
 import re
 from itertools import product 
+import copy
+import math
 
 
 # Define the base directory relative to the current script's location
