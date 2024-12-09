@@ -174,7 +174,7 @@ with ExecutionTimer():
 # Execution time: 0 hours, 1 minutes, 30 seconds, 21.6408 milliseconds
     
     
-# vreselijke code, slechte naamgeving. Methodes die zouden kunnen gerefactored en gecombineerd worden 
+# vreselijke code, slechte naamgeving. Methodes die zouden kunnen gerefactored en gecombineerd worden, memoization die zou kunnen worden toegepast
 # het gaat ook niet bijzonder snel
 # maar het werkt wel
             
