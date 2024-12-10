@@ -15,8 +15,6 @@ BASE_DIR = Path(__file__).parent  # Path to the current script's folder
 # Define paths to your input files dynamically
 INPUT = BASE_DIR / 'input'
 TEST_INPUT = BASE_DIR / 'input_test'
-TEST_INPUT_B = BASE_DIR / 'input_test_B'
-
 
 def transform_input(inputlocation):
     with open(inputlocation) as file:
@@ -90,7 +88,6 @@ def compact_disk_layout(disk_layout):
 def compact_disk_layout_with_framentation(disk_layout):
     
     disk_compacted_fragmented = disk_layout.copy()
-    
     # print(disk_compacted_fragmented)
     index = -1 
     # print(f"max_file_id: {disk_layout[index]}")
@@ -101,9 +98,7 @@ def compact_disk_layout_with_framentation(disk_layout):
     while(index is not None):
     
         length_file_id = eind_index_file_id - begin_index_file_id + 1
-    
         # print(f"max_file_id: {disk_layout[index]}, begin_index_file_id: {begin_index_file_id}, eind_index_file_id: {eind_index_file_id}, length_file_id: {length_file_id}")
-    
         free_index = find_index_first_x(disk_compacted_fragmented[:index], '.', length_file_id)
         # print(f"free index: {free_index}")
     
@@ -124,17 +119,6 @@ def compact_disk_layout_with_framentation(disk_layout):
         
     return disk_compacted_fragmented
 
-
-        
-
-        
-    
-    
-     
-        
-
-
-
 print("=================== part A ===================")
 with ExecutionTimer():
     disk_map = transform_input(INPUT)
@@ -152,9 +136,6 @@ with ExecutionTimer():
 # 6334655979668
 # Execution time: 0 hours, 1 minutes, 27 seconds, 528.3344 milliseconds
 
-    
-
-    
 print("=================== part B ===================")
 with ExecutionTimer():
     disk_map = transform_input(INPUT)
@@ -176,19 +157,4 @@ with ExecutionTimer():
     
 # vreselijke code, slechte naamgeving. Methodes die zouden kunnen gerefactored en gecombineerd worden, memoization die zou kunnen worden toegepast
 # het gaat ook niet bijzonder snel
-# maar het werkt wel
-            
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
+# maar het werkt wel           
