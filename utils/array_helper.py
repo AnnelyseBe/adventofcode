@@ -67,6 +67,35 @@ class ArrayHelper:
         else:
             return next_array_rank // columncount, next_array_rank % columncount
         
+    #todo op een mooie manier ook up, down, left, right bij zetten
+    # returns row, column, value
+    @staticmethod
+    def valid_neighbour_coordinates_and_value(my_array, direction, position_row, position_column):
+        match direction: 
+            case "NORTH": 
+                if (ArrayHelper.is_in_array_bounds(my_array, position_row - 1, position_column)):
+                    return position_row - 1, position_column, my_array[position_row - 1][position_column]
+                else:
+                    return None
+            case "EAST": 
+                if (ArrayHelper.is_in_array_bounds(my_array, position_row, position_column + 1)):
+                    return position_row, position_column + 1, my_array[position_row][position_column + 1]
+                else:
+                    return None
+            case "WEST": 
+                if (ArrayHelper.is_in_array_bounds(my_array, position_row, position_column - 1)):
+                    return position_row, position_column -1, my_array[position_row][position_column -1]
+                else:
+                    return None                
+            case "SOUTH": 
+                if (ArrayHelper.is_in_array_bounds(my_array, position_row + 1, position_column)):
+                    return position_row + 1, position_column, my_array[position_row + 1][position_column]
+                else:
+                    return None    
+            case _ : 
+                return position_row, position_column
+    
+    @DeprecationWarning    
     @staticmethod # Since the method does not use self or the class instance, it should be defined as a static method.
     def find_item_position_in_2d(my_array, item_to_search):
         """

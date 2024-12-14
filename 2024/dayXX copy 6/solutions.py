@@ -14,8 +14,9 @@ BASE_DIR = Path(__file__).parent  # Path to the current script's folder
 
 # Define paths to your input files dynamically
 INPUT = BASE_DIR / 'input'
-TEST_INPUT = BASE_DIR / 'input_test'
+TEST_INPUT_A = BASE_DIR / 'input_test_A'
 TEST_INPUT_B = BASE_DIR / 'input_test_B'
+TEST_INPUT_C = BASE_DIR / 'input_test_C'
 
 
 def transform_input(inputlocation):
@@ -27,7 +28,7 @@ def transform_input(inputlocation):
 
 print("=================== part A ===================")
 with ExecutionTimer():
-    transform_input(TEST_INPUT)
+    transform_input(TEST_INPUT_A)
     print("todo")
 
     
@@ -35,7 +36,7 @@ with ExecutionTimer():
     
 print("=================== part B ===================")
 with ExecutionTimer():
-    transform_input(TEST_INPUT)
+    transform_input(TEST_INPUT_A)
     print("todo")
 
     

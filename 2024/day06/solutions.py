@@ -56,15 +56,12 @@ def route(map):
     WEST = '<'
     
     rowcount, columncount = map.shape
-    # print(f'rowcount: {rowcount}, columncount: {columncount}')
     
     in_infinite_loop = False
     in_map = True
     position_row, position_column = ArrayHelper.find_item_position_in_2d(map, NORTH)
-    # print(f'startposition: {position_row},{position_column}')
 
     direction = 'NORTH'
-    # print(f'direction: {direction}')
     
     direction_and_location = set()
     diffrent_movement_count = 0
@@ -72,26 +69,20 @@ def route(map):
     while(in_map and not in_infinite_loop):
         # evaluate next position
         next_position_row, next_position_column = next_coordinates(direction, position_row, position_column)
-        # print(f'nextposition: {next_position_row},{next_position_column}')
 
-        
         # evaluate 
         if (next_position_row < 0 or next_position_row >= rowcount or next_position_column <0 or next_position_column >= columncount):  # out of bound
             map[position_row, position_column] = 'X'
             in_map = False
-            # print(f'guard walkes out of the map')
         elif (map[next_position_row, next_position_column] == '#'): # turn 
             direction = turn(direction)
-            # print(f'step not possible turning to {direction}')
         elif (map[next_position_row, next_position_column] == 'O'): # turn 
             direction = turn(direction)
-            # print(f'step not possible turning to {direction}')
         elif (map[next_position_row, next_position_column] != '#'):  # valid step
             map[position_row, position_column] = 'X'
             direction_and_location.add((direction, next_position_row, next_position_column))
             if (len(direction_and_location) > diffrent_movement_count): # not yet in a loop, never run this place in this direction
                 position_row, position_column = next_position_row, next_position_column
-                # print(f'one step taken in direction {direction}')
             else:
                 in_infinite_loop = True
         
