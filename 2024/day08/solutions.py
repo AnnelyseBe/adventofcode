@@ -67,7 +67,7 @@ def mark_antinodes(map):
     for r in range(rowcount):
         for c in range(columncount):
             if (is_antenna(map[r][c])):
-                r_next, c_next = ArrayHelper.find_next_item_that_contains(map, map[r][c][0], start_index= ArrayHelper.find_next_coordinate(map, r, c))
+                r_next, c_next = ArrayHelper.find_next_coordinates_that_contain(map, map[r][c][0], start_index= ArrayHelper.find_next_coordinate(map, r, c))
                 
                 while (r_next != -1):
                     pos1, pos2 = find_antinode_positions(Coordinates(r,c),Coordinates(r_next, c_next))
@@ -78,7 +78,7 @@ def mark_antinodes(map):
                     if (ArrayHelper.is_in_array_bounds(map, pos2.row, pos2.column)):
                         if "#" not in map_with_antinodes[pos2.row][pos2.column]:
                             map_with_antinodes[pos2.row][pos2.column] += "#"                        
-                    r_next, c_next = ArrayHelper.find_next_item_that_contains(map, map[r][c][0], start_index=ArrayHelper.find_next_coordinate(map, r_next, c_next))
+                    r_next, c_next = ArrayHelper.find_next_coordinates_that_contain(map, map[r][c][0], start_index=ArrayHelper.find_next_coordinate(map, r_next, c_next))
                     
     return map_with_antinodes
 
@@ -90,7 +90,7 @@ def mark_antinodes_partB(map):
     for r in range(rowcount):
         for c in range(columncount):
             if (is_antenna(map[r][c])):
-                r_next, c_next = ArrayHelper.find_next_item_that_contains(map, map[r][c][0], start_index= ArrayHelper.find_next_coordinate(map, r, c))
+                r_next, c_next = ArrayHelper.find_next_coordinates_that_contain(map, map[r][c][0], start_index= ArrayHelper.find_next_coordinate(map, r, c))
                 
                 while (r_next != -1): 
                     antinodes = find_antinodes_position_partB(map, Coordinates(r,c),Coordinates(r_next, c_next))
@@ -98,7 +98,7 @@ def mark_antinodes_partB(map):
                     for antinode in antinodes:
                         if "#" not in map_with_antinodes[antinode[0]][antinode[1]]:
                             map_with_antinodes[antinode[0]][antinode[1]] += "#" 
-                    r_next, c_next = ArrayHelper.find_next_item_that_contains(map, map[r][c][0], start_index=ArrayHelper.find_next_coordinate(map, r_next, c_next))
+                    r_next, c_next = ArrayHelper.find_next_coordinates_that_contain(map, map[r][c][0], start_index=ArrayHelper.find_next_coordinate(map, r_next, c_next))
 
                                         
     return map_with_antinodes

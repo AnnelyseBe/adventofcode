@@ -19,7 +19,8 @@
 				"ms-python.debugpy",
 				"KevinRose.vsc-python-indent",
 				"ms-azuretools.vscode-docker",
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"njpwerner.autodocstring"
 			]
 		}
 	}
