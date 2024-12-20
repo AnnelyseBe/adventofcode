@@ -15,8 +15,6 @@ BASE_DIR = Path(__file__).parent  # Path to the current script's folder
 # Define paths to your input files dynamically
 INPUT = BASE_DIR / 'input'
 TEST_INPUT_A = BASE_DIR / 'input_test_A'
-TEST_INPUT_B = BASE_DIR / 'input_test_B'
-TEST_INPUT_C = BASE_DIR / 'input_test_C'
 
 Token_combination = namedtuple('Token_combination', ['A', 'B', 'token_count'])
 Robot = namedtuple('Robot', ['rank', 'x','y','dx','dy'])

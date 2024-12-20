@@ -1,3 +1,7 @@
+# Files die ik niet wil committen
+# deze file (result van berekening) wordt te groot
+robots_in_time 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
