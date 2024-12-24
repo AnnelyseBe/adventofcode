@@ -3,6 +3,13 @@ import warnings
 
 class ArrayHelper:
     
+    my_directions = {
+        "n" : ["n", "NORTH", "north", "up","^"],
+        "e" : ["e", "EAST", "east", "right",">"],
+        "s" : ["s", "SOUTH", "south", "down","v"],
+        "w" : ["w", "WEST", "west", "left","<"],
+    }
+    
 
     @staticmethod # Since the method does not use self or the class instance, it should be defined as a static method.    
     def find_next_coordinates_that_equal(my_array, item_to_search, start_index=(0, 0)):
@@ -90,8 +97,12 @@ class ArrayHelper:
                 return "sw"
             else: # right
                 return "se"
-                
+            
+    
 
+            
+            
+                
     @staticmethod
     def neighbour_coordinates(direction, position, only_return_valid = False, my_array = np.zeros(1)):
         """Gives neighbour coördinates. Validiy check is optional
@@ -132,7 +143,6 @@ class ArrayHelper:
             
         return position
         
-
     @staticmethod
     def valid_neighbour_coordinates_and_value(my_array, direction, position):
         """gives rownumber, columnnumber and value of the neighbour in a 2D numpy array. If the neighbour is not available, result will be None
@@ -143,7 +153,7 @@ class ArrayHelper:
             position (tuple): (row, column)
 
         Returns:
-            row_number, column_number, value
+            (row_number, column_number), value
         """
         neighbour = ArrayHelper.neighbour_coordinates(direction, position, True, my_array)
         
@@ -162,9 +172,7 @@ class ArrayHelper:
             for col in range(cols):
                 print(my_array[row, col], end =space_between_by)
             print('\n')
-        
-        
-    
+            
     @DeprecationWarning    
     @staticmethod # Since the method does not use self or the class instance, it should be defined as a static method.
     def find_item_position_in_2d(my_array, item_to_search):

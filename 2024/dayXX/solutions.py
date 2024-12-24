@@ -7,6 +7,7 @@ import re
 from itertools import product 
 import copy
 import math
+import sys 
 
 
 # Define the base directory relative to the current script's location
