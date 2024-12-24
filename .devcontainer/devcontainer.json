@@ -8,7 +8,6 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
-
 	"containerEnv": {
 		"PYTHONPATH": "${containerWorkspaceFolder}"  // Adjust the path accordingly
 	},
@@ -21,9 +20,16 @@
 				"ms-azuretools.vscode-docker",
 				"mhutchie.git-graph",
 				"njpwerner.autodocstring"
-			]
+			],
+			"settings": {
+				"python.testing.pytestEnabled": true,
+				"python.testing.unittestEnabled": false,
+				"python.testing.pytestArgs": ["tests"],
+				"python.defaultInterpreterPath": "/usr/local/bin/python"  // Adjust path to your Python interpreter in the container
+			  }
 		}
 	}
+	
 
 
 

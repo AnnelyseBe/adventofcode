@@ -57,7 +57,6 @@ class ArrayHelper:
 
         return -1, -1
     
-    @staticmethod # Since the method does not use self or the class instance, it should be defined as a static method.
     def is_in_array_bounds(my_array, row, column):
         rowcount, columncount = my_array.shape
         return row < rowcount and row >= 0 and column < columncount and column >= 0
