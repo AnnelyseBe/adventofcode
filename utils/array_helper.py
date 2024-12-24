@@ -137,7 +137,7 @@ class ArrayHelper:
         if(only_return_valid):
             # Check if the new position is within bounds
             if ArrayHelper.is_in_array_bounds(my_array, new_row, new_col):
-                return new_row, new_col
+                return (new_row, new_col)
             else:
                 return None
             
@@ -163,7 +163,7 @@ class ArrayHelper:
             return (new_row, new_col), my_array[new_row][new_col]
 
         # Return None if the position is out of bounds
-        return None
+        return None, None
     
     def print_2d_array_string_values(my_array, space_between_by=""):
         rows, cols = my_array.shape

@@ -31,13 +31,13 @@ def get_neighbourcount(garden, row, column):
     neighbour_east = ArrayHelper.valid_neighbour_coordinates_and_value(garden, "EAST", (row, column))
     neighbour_west = ArrayHelper.valid_neighbour_coordinates_and_value(garden, "WEST", (row, column))
     
-    if (neighbour_north != None and neighbour_north[1] == garden[row][column]):
+    if (neighbour_north[1] != None and neighbour_north[1] == garden[row][column]):
         neighbour_count += 1
-    if (neighbour_south != None and neighbour_south[1] == garden[row][column]):
+    if (neighbour_south[1] != None and neighbour_south[1] == garden[row][column]):
         neighbour_count += 1
-    if (neighbour_east != None and neighbour_east[1] == garden[row][column]):
+    if (neighbour_east[1] != None and neighbour_east[1] == garden[row][column]):
         neighbour_count += 1
-    if (neighbour_west != None and neighbour_west[1] == garden[row][column]):
+    if (neighbour_west[1] != None and neighbour_west[1] == garden[row][column]):
         neighbour_count += 1
     return neighbour_count
     
@@ -60,7 +60,7 @@ def get_region(garden, row, column, visited=None): # met behulp van chatgpt
     # Explore neighbors
     for direction in directions:
         neighbour = ArrayHelper.valid_neighbour_coordinates_and_value(garden, direction, (row, column))
-        if neighbour:
+        if neighbour[0] and neighbour[1]:
             (neighbour_row, neighbour_column), neighbour_value = neighbour
             if (neighbour_value == region) and ((neighbour_row, neighbour_column) not in visited):
                 points_in_area.update(get_region(garden, neighbour_row, neighbour_column, visited))
