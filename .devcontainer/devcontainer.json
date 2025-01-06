@@ -19,7 +19,8 @@
 				"KevinRose.vsc-python-indent",
 				"ms-azuretools.vscode-docker",
 				"mhutchie.git-graph",
-				"njpwerner.autodocstring"
+				"njpwerner.autodocstring",
+				"GitHub.copilot"
 			],
 			"settings": {
 				"python.testing.pytestEnabled": true,
